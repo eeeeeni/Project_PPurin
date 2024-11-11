@@ -25,11 +25,6 @@ public class HomeController {
         return "gallery/gallery";
     }
 
-    @GetMapping("/gallery/edit")
-    public String editGallery(Model model) {
-        // "edit.html" 파일로 이동
-        return "gallery/edit";
-    }
 
     @GetMapping("/gallery/inner")
     public String innerGallery(Model model) {
@@ -37,9 +32,4 @@ public class HomeController {
         return "gallery/inner";
     }
 
-    @GetMapping("/gallery/write")
-    public String writeGallery(Model model) {
-        // "write.html" 파일로 이동
-        return "gallery/write";
-    }
 }

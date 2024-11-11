@@ -12,13 +12,20 @@
                     <li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/gallery}">Gallery</a></li>
                 </ul>
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                        Login
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
-                </form>
+                <div class="d-flex">
+                    <!-- 로그인 상태에 따라 다른 버튼 표시 -->
+                    <!-- <div th:if="${#request.remoteUser == null}">
+                        <a class="btn btn-outline-dark" th:href="@{/login}">
+                            <i class="bi-person-fill me-1"></i>
+                            Login
+                        </a>
+                    </div> -->
+                    <!-- <div th:if="${#request.remoteUser != null}">
+                        <a class="btn btn-outline-dark" th:href="@{/logout}">
+                            <i class="bi-person-fill me-1"></i>
+                            Logout
+                        </a>
+                    </div> -->
             </div>
         </div>
     </nav>
