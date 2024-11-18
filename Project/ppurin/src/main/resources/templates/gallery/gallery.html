@@ -22,9 +22,9 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="d-flex justify-content-end mb-4">
                 <!-- 관리자만 보이는 글쓰기 버튼 -->
-                <button th:if="${isAdmin}" class="btn btn-primary" type="button">
+                <a th:if="${session.isAdmin}" href="/gallery/write" class="btn btn-primary">
                     글쓰기
-                </button>
+                </a>
             </div>
             
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
