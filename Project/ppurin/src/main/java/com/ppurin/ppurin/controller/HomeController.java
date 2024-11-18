@@ -25,7 +25,6 @@ public class HomeController {
         return "gallery/gallery";
     }
 
-
     @GetMapping("/gallery/inner")
     public String innerGallery(Model model) {
         // "inner.html" 파일로 이동
