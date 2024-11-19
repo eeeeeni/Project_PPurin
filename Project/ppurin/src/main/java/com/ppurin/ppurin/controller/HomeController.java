@@ -25,15 +25,15 @@ public class HomeController {
         return "about"; // about.html 출력
     }
     
-    @GetMapping("/gallery")
-    public String gallery(Model model) {
-        return "gallery/gallery"; // gallery.html 출력
-    }
+    // @GetMapping("/gallery")
+    // public String gallery(Model model) {
+    //     return "gallery/gallery"; // gallery.html 출력
+    // }
 
-    @GetMapping("/gallery/inner")
-    public String innerGallery(Model model) {
-        return "gallery/inner"; // inner.html 출력
-    }
+    // @GetMapping("/gallery/inner")
+    // public String innerGallery(Model model) {
+    //     return "gallery/inner"; // inner.html 출력
+    // }
 
 @GetMapping("/user/mypage")
 public String mypageUser(HttpSession session, Model model) {

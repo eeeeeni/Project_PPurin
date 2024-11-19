@@ -1,14 +1,30 @@
 package com.ppurin.ppurin.gallery;
 
-public class postDTO {
+import java.util.List;
 
+public class postDTO {
     private String title;
     private String content;
-    private String tags;
+    private String imageUrl;
     private String date;
+    private String tags;
 
-    // Getters and Setters
+    // 추가된 필드
+    private List<String> tagList;
 
+    // 기본 생성자
+    public postDTO() {}
+
+    // 생성자
+    public postDTO(String title, String content, String imageUrl, String date, String tags) {
+        this.title = title;
+        this.content = content;
+        this.imageUrl = imageUrl;
+        this.date = date;
+        this.tags = tags;
+    }
+
+    // Getter and Setter
     public String getTitle() {
         return title;
     }
@@ -25,12 +41,12 @@ public class postDTO {
         this.content = content;
     }
 
-    public String getTags() {
-        return tags;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setTags(String tags) {
-        this.tags = tags;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getDate() {
@@ -41,13 +57,25 @@ public class postDTO {
         this.date = date;
     }
 
-    // toEntity 메서드 추가
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    // 추가된 Getter and Setter for tagList
+    public List<String> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<String> tagList) {
+        this.tagList = tagList;
+    }
+
+    // Entity로 변환하는 메소드
     public postEntity toEntity() {
-        postEntity entity = new postEntity();
-        entity.setTitle(this.title);
-        entity.setContent(this.content);
-        entity.setTags(this.tags);
-        entity.setDate(this.date);
-        return entity;
+        return new postEntity(title, content, imageUrl, date, tags);
     }
 }

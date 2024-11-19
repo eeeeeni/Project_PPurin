@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>Gallery</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -27,49 +27,32 @@
                 </a>
             </div>
             
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            
-            <!-- Card 1 -->
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <img class="card-img-top" th:src="@{https://dummyimage.com/450x300/dee2e6/6c757d.jpg}" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <h5 class="fw-bolder">Fancy Product 1</h5>
-                                <p class="text-muted mb-2">2023-11-07</p>
-                                <div class="tags mt-2">
-                                    <span class="badge bg-secondary">#태그1</span>
-                                    <span class="badge bg-secondary">#태그2</span>
-                                </div>
-                                <button class="btn btn-outline-danger btn-sm mt-2 like-btn">❤️ 좋아요</button>
+         <!-- Dynamic Cards -->
+         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" th:each="post : ${posts}">
+                <div class="card h-100">
+                    <!-- Image -->
+                    <img class="card-img-top" th:src="@{${post.imageUrl}}" alt="Image" />
+                    <!-- Card Body -->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Title -->
+                            <h5 class="fw-bolder" th:text="${post.title}"></h5>
+                            <!-- Date -->
+                            <p class="text-muted mb-2" th:text="${post.date}"></p>
+                            <!-- Tags -->
+                            <div class="tags mt-2">
+                                <span class="badge bg-secondary" th:each="tag : ${post.tagList}" th:text="${tag}"></span>
                             </div>
+                            <!-- Like Button -->
+                            <button class="btn btn-outline-danger btn-sm mt-2 like-btn">❤️ 좋아요</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Additional Cards -->
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <img class="card-img-top" th:src="@{https://dummyimage.com/450x300/dee2e6/6c757d.jpg}" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <h5 class="fw-bolder">Fancy Product 2</h5>
-                                <div class="tags mt-2">
-                                    <span class="badge bg-secondary">#태그A</span>
-                                    <span class="badge bg-secondary">#태그B</span>
-                                    <span class="badge bg-secondary">#태그C</span>
-                                </div>
-                                <button class="btn btn-outline-danger btn-sm mt-2 like-btn">❤️ 좋아요</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more cards as needed -->
-
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- JavaScript Files -->
     <script th:src="@{/path/to/gallryscript.js}"></script>

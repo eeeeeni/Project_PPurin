@@ -1,71 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>뿌린은 강쥐 - 글쓰기</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link th:href="@{/assets/css/gallery.css}" rel="stylesheet" />
-    </head>
-    <body>
-    <!-- Header Navigation -->
-    <div th:replace="~{layout/header :: header}"></div>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Write</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/assets/css/gallery.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- Header Navigation -->
+<div th:replace="~{layout/header :: header}"></div>
 
-    <!-- Upload Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-8 offset-md-2">
-                    <h1 class="display-6 fw-bolder text-center">사진 업로드</h1>
-                    <form>
-                        <!-- 사진 선택 -->
-                        <div class="mb-3">
-                            <label for="photoUpload" class="form-label">사진 선택</label>
-                            <input class="form-control" type="file" id="photoUpload" accept="image/*">
-                        </div>
+<!-- Upload Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="display-6 fw-bolder text-center">사진 업로드</h1>
+               <!-- 사진 업로드 폼 -->
+<form method="post" enctype="multipart/form-data" th:action="@{/gallery/write}">
+    <!-- 사진 선택 -->
+    <div class="mb-3">
+        <label for="photoUpload" class="form-label">사진 선택</label>
+        <input class="form-control" type="file" id="photoUpload" name="image" accept="image/*" required>
+    </div>
 
-                        <!-- 제목 입력 -->
-                        <div class="mb-3">
-                            <label for="title" class="form-label">제목</label>
-                            <input type="text" class="form-control" id="title" placeholder="사진 제목을 입력하세요">
-                        </div>
+    <!-- 제목 입력 -->
+    <div class="mb-3">
+        <label for="title" class="form-label">제목</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="사진 제목을 입력하세요" required>
+    </div>
 
-                        <!-- 날짜 선택 -->
-                        <div class="mb-3">
-                            <label for="date" class="form-label">촬영 날짜</label>
-                            <input type="date" class="form-control" id="date">
-                        </div>
+    <!-- 내용 입력 -->
+    <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control" id="content" name="content" placeholder="사진 내용을 입력하세요" required></textarea>
+    </div>
 
-                        <!-- 태그 입력 -->
-                        <div class="mb-3">
-                            <label for="tags" class="form-label">태그</label>
-                            <input type="text" class="form-control" id="tags" placeholder="태그를 쉼표로 구분하여 입력하세요 (예: 강아지, 산책, 공원)">
-                        </div>
+    <!-- 날짜 선택 -->
+    <div class="mb-3">
+        <label for="date" class="form-label">촬영 날짜</label>
+        <input type="date" class="form-control" id="date" name="date">
+    </div>
 
-                        <!-- 제출 버튼 -->
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-outline-dark">업로드하기</button>
-                        </div>
-                    </form>
-                </div>
+    <!-- 태그 입력 -->
+    <div class="mb-3">
+        <label for="tags" class="form-label">태그</label>
+        <input type="text" class="form-control" id="tags" name="tags" placeholder="태그를 쉼표로 구분하여 입력하세요">
+    </div>
+
+    <!-- 제출 버튼 -->
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-dark">업로드하기</button>
+    </div>
+</form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; 뿌린은 강쥐 2024</p>
-        </div>
-    </footer>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 뿌린은 강쥐 2024</p>
+    </div>
+</footer>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
