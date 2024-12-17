@@ -6,20 +6,19 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>나는야 뿌린</title>
-    <!-- Favicon-->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
-    <!-- Bootstrap icons-->
+    <!-- Bootstrap icons -->
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css}" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- Core theme CSS (includes Bootstrap) -->
     <link th:href="@{/assets/css/about.css}" rel="stylesheet" />
 </head>
 
 <body>
     <!-- Header Navigation -->
     <div th:replace="~{layout/header :: header}"></div>
-    
 
-    <!-- My Page Section-->
+    <!-- My Page Section -->
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <h1 class="display-6 fw-bolder text-center">마이페이지 - 좋아요 누른 사진들</h1>
@@ -31,8 +30,13 @@
 
     <!-- 좋아요한 사진 불러오기 스크립트 -->
     <script>
-        fetch('/api/likes')
-            .then(response => response.json())
+        fetch('/user/mypage/data')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch liked posts');
+                }
+                return response.json();
+            })
             .then(likedPhotos => {
                 const container = document.querySelector('.liked-photos-container');
                 if (likedPhotos.length === 0) {
@@ -43,14 +47,11 @@
                         card.className = 'col mb-5';
                         card.innerHTML = `
                             <div class="card h-100">
-                                <img class="card-img-top" src="${photo.imageUrl}" alt="..." />
+                                <img class="card-img-top" src="${photo.postImageUrl}" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="text-center">
-                                        <h5 class="fw-bolder">${photo.title}</h5>
-                                        <p class="text-muted mb-2">촬영 날짜: ${photo.date}</p>
-                                        <div class="tags mt-2">
-                                            ${photo.tags.map(tag => `<span class="badge bg-secondary">#${tag}</span>`).join('')}
-                                        </div>
+                                        <h5 class="fw-bolder">${photo.postTitle}</h5>
+                                        <p class="text-muted mb-2">촬영 날짜: ${photo.date || '정보 없음'}</p>
                                     </div>
                                 </div>
                             </div>

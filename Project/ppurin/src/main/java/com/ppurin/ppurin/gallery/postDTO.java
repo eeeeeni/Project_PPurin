@@ -1,30 +1,40 @@
 package com.ppurin.ppurin.gallery;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class postDTO {
+public class PostDTO {
+    private Long id;
     private String title;
     private String content;
     private String imageUrl;
     private String date;
     private String tags;
-
-    // 추가된 필드
     private List<String> tagList;
 
     // 기본 생성자
-    public postDTO() {}
+    public PostDTO() {}
 
     // 생성자
-    public postDTO(String title, String content, String imageUrl, String date, String tags) {
+    public PostDTO(Long id, String title, String content, String imageUrl, String date, String tags) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.imageUrl = imageUrl;
         this.date = date;
         this.tags = tags;
+        this.tagList = Arrays.asList(tags.split(",")); // tags를 tagList로 변환
     }
 
     // Getter and Setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -63,19 +73,20 @@ public class postDTO {
 
     public void setTags(String tags) {
         this.tags = tags;
+        this.tagList = Arrays.asList(tags.split(",")); // 업데이트 시 tagList 동기화
     }
 
-    // 추가된 Getter and Setter for tagList
     public List<String> getTagList() {
         return tagList;
     }
 
     public void setTagList(List<String> tagList) {
         this.tagList = tagList;
+        this.tags = String.join(",", tagList); // 업데이트 시 tags 동기화
     }
 
     // Entity로 변환하는 메소드
-    public postEntity toEntity() {
-        return new postEntity(title, content, imageUrl, date, tags);
+    public PostEntity toEntity() {
+        return new PostEntity(id, title, content, imageUrl, date, tags);
     }
 }
