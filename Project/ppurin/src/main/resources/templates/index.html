@@ -1,114 +1,56 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8">
-	<title>뿌린은 강쥐</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="freehtml5.co" />
-
-	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="/assets/css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="/assets/css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="/assets/css/bootstrap.css">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="/assets/css/style.css">
-
-	<!-- Modernizr JS -->
-	<script src="/assets/js/modernizr-2.6.2.min.js"></script>
-
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>뿌린은 강쥐</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+    <!-- Bootstrap icons-->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css}" rel="stylesheet" />
+    <!-- Core theme CSS -->
+    <link th:href="@{/assets/css/about.css}" rel="stylesheet" />
 </head>
+
 <body>
+    <!-- Header Navigation -->
+    <div th:replace="~{layout/header :: header}"></div>
 
-	<div class="fh5co-loader"></div>
+    <!-- Hero Section -->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-start">
+                <!-- 이미지 섹션 -->
+                <div class="col-md-4">
+                    <img class="card-img-top mb-5 mb-md-0" src="/assets/images/user-3.jpeg" alt="뿌린의 사진" />
+                </div>
+                <!-- 텍스트 섹션 -->
+                <div class="col-md-8">
+                    <div class="mb-4">
+                        <h1 class="display-5 fw-bolder">나는야 뿌린</h1>
+                        <p class="lead">
+                            안녕! 나는 잠실의 슈퍼스타 강쥐 뿌린이야!<br />
+                            좋아하는 건 간식 🍪, 싫어하는 건 더운 날 걷기 🌞<br />
+                            특기는 낮잠 자기 🛌, 비밀은 숨소리가 좀 크다는 거야..! ㅎㅎ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<div id="page">
-		<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(/assets/images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center">
-						<div class="display-t js-fullheight">
-							<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-								<div class="profile-thumb" style="background: url(/assets/images/user-3.jpeg);"></div>
-								<h1><span>ppruin</span></h1>
-								<p>
-									<ul class="fh5co-social-icons">
-										<!-- 뿌린이에 대한 설명 게시판 -->
-										<li><a th:href="@{/about}"><i class="bi bi-info-circle"></i></a></li>
-										<!-- 영상과 사진을 올리는 게시판 -->
-										<li><a th:href="@{/gallery}"><i class="bi bi-image"></i></a></li>
-										<!-- 로그인(회원가입) -->
-										<li><a th:href="@{/login}"><i class="bi bi-person-circle"></i></a></li>
-										<!-- 마이페이지 -->
-										<li><a th:href="@{/user/mypage}"><i class="bi bi-person"></i></a></li>
-									</ul>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-	</div>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">&copy; 2025 뿌린은 강쥐. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-	<!-- <div id="fh5co-about" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>About Me</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<ul class="info">
-						<li><span class="first-block">Full Name:</span><span class="second-block">푸린 aka.뿌린</span></li>
-						<li><span class="first-block">Age:</span><span class="second-block">9</span></li>
-						<li><span class="first-block">Like:</span><span class="second-block">음식/시원한 날씨/아빠/엄마</span></li>
-						<li><span class="first-block">Hate:</span><span class="second-block">금식/공복/더위</span></li>
-					</ul>
-				</div>
-				<div class="col-md-8">
-					<h2>모두들 안녕!</h2>
-					<p>나는 잠실의 슈퍼스타, 잠실나루의 대표 왕자님이야!</p>
-					<p>이 곳은 나의 집사(32세) 중 하나가 팬심으로 만든 공간이야!</p>
-					<p>그저 나의 영상과 사진들을 보며 즐기면 돼 뿌잉뿌잉</p>
-					
-					<ul class="fh5co-social-icons">
-						<li><a href="#"><i class="icon-twitter2"></i></a></li>
-						<li><a href="#"><i class="icon-facebook3"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
-	</div>
-
-	<!-- jQuery -->
-	<script src="/assets/js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="/assets/js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="/assets/js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="/assets/js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="/assets/js/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="/assets/js/jquery.easypiechart.min.js"></script>
-	<!-- Main -->
-	<script src="/assets/js/main.js"></script>
-
+    <!-- Bootstrap core JS -->
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js}"></script>
+    <!-- Core theme JS -->
+    <script th:src="@{/assets/js/scripts.js}"></script>
 </body>
 </html>

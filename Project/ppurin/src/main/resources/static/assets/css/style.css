@@ -10,6 +10,86 @@
 * 	Template Style 
 *
 * ======================================================= */
+
+/* 전체 컨테이너 스타일 */
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 헤더 섹션 */
+header {
+  flex: 1;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* 프로필 이미지 */
+.profile-thumb {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px auto;
+}
+
+/* 텍스트 섹션 */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+/* 버튼 스타일 */
+button, a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 30px;
+  margin: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+a.btn-outline-primary { background-color: #007bff; color: white; }
+a.btn-outline-primary:hover { background-color: #0056b3; }
+
+a.btn-outline-success { background-color: #28a745; color: white; }
+a.btn-outline-success:hover { background-color: #1c7430; }
+
+a.btn-outline-warning { background-color: #ffc107; color: black; }
+a.btn-outline-warning:hover { background-color: #e0a800; }
+
+a.btn-outline-dark { background-color: #343a40; color: white; }
+a.btn-outline-dark:hover { background-color: #23272b; }
+
+/* 버튼 간 간격 */
+a.btn {
+  margin: 10px 10px;
+}
+
+/* 푸터 스타일 */
+footer {
+  text-align: center;
+  background-color: #e9ecef;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: auto;
+}
+
 body {
   font-family: "Space Mono", Arial, serif;
   font-weight: 400;
