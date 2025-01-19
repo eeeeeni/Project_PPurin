@@ -5,45 +5,34 @@
             <div class="d-flex align-items-center">
                 <!-- 로고 -->
                 <a class="navbar-brand" th:href="@{/index}" style="font-weight: bold; color: #333; font-size: 1.5rem;">
-                    뿌린은 강쥐 🐾
+                    🏠 뿌린은 강쥐
                 </a>
                 <!-- 메뉴 -->
                 <ul class="navbar-nav ms-4 d-flex flex-row">
-                    <li class="nav-item">
-                        <a class="nav-link px-3 py-1 rounded" th:href="@{/index}" style="color: #555; font-size: 1rem; font-weight: 500;">
-                            🏠 홈페이지
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link px-3 py-1 rounded" th:href="@{/gallery}" style="color: #555; font-size: 1rem; font-weight: 500;">
                             📸 사진첩
                         </a>
                     </li>
-                </ul>
-            </div>
-
-            <!-- 날씨 및 로그인 -->
-            <div class="d-flex align-items-center">
-                <!-- 날씨 정보 -->
-                <div id="weather" class="d-flex align-items-center me-3" style="font-size: 0.9rem; color: #777;">
-                    <img src="" alt="날씨 아이콘" id="weather-icon" style="width: 24px; height: 24px; margin-right: 8px; display: none;" />
-                    <span id="weather-text" style="margin-right: 12px;">날씨 로딩 중...</span>
-                    <div id="weather-desc" style="font-size: 0.9rem; color: #555; white-space: nowrap;"></div>
-                </div>
-
-                <!-- 로그인 상태 -->
-                <div class="d-flex">
-                    <div th:if="${session.user == null}">
+                    <!-- 로그인 상태 -->
+                    <div th:if="${session.user == null}" class="nav-item">
                         <a class="nav-link px-3 py-1 rounded" th:href="@{/login}" style="color: #555; font-size: 1rem; font-weight: 500;">
                             🔑 로그인
                         </a>
                     </div>
-                    <div th:if="${session.user != null}">
+                    <div th:if="${session.user != null}" class="nav-item">
                         <a class="nav-link px-3 py-1 rounded" th:href="@{/user/mypage}" style="color: #555; font-size: 1rem; font-weight: 500;">
                             👤 마이페이지
                         </a>
                     </div>
-                </div>
+                </ul>
+            </div>
+
+            <!-- 날씨 정보 -->
+            <div id="weather" class="d-flex align-items-center" style="font-size: 0.9rem; color: #777;">
+                <img src="" alt="날씨 아이콘" id="weather-icon" style="width: 24px; height: 24px; margin-right: 8px; display: none;" />
+                <span id="weather-text" style="margin-right: 12px;">날씨 로딩 중...</span>
+                <div id="weather-desc" style="font-size: 0.9rem; color: #555; white-space: nowrap;"></div>
             </div>
         </div>
     </nav>

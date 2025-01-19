@@ -6,17 +6,32 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>뿌린은 강쥐</title>
-    <!-- Favicon-->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
-    <!-- Bootstrap icons-->
+    <!-- Bootstrap icons -->
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css}" rel="stylesheet" />
     <!-- Core theme CSS -->
     <link th:href="@{/assets/css/about.css}" rel="stylesheet" />
+    <style>
+
+        /* 리스트 점 제거 */
+        .list-unstyled {
+            list-style-type: none; /* 점 제거 */
+            padding: 0; /* 여백 제거 */
+            margin: 0; /* 여백 제거 */
+        }
+
+        /* 리스트 항목 스타일 */
+        .list-unstyled li {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Header Navigation -->
     <div th:replace="~{layout/header :: header}"></div>
+
 
     <!-- Hero Section -->
     <section class="py-5">
@@ -24,16 +39,29 @@
             <div class="row gx-4 gx-lg-5 align-items-start">
                 <!-- 이미지 섹션 -->
                 <div class="col-md-4">
-                    <img class="card-img-top mb-5 mb-md-0" src="/assets/images/user-3.jpeg" alt="뿌린의 사진" />
+                    <img class="card-img-top mb-5 mb-md-0 rounded shadow-sm" src="/assets/images/user-3.jpeg" alt="뿌린의 사진" />
                 </div>
                 <!-- 텍스트 섹션 -->
                 <div class="col-md-8">
                     <div class="mb-4">
-                        <h1 class="display-5 fw-bolder">나는야 뿌린</h1>
+                        <h1 class="display-5 fw-bolder">뿌린의 이야기</h1>
                         <p class="lead">
-                            안녕! 나는 잠실의 슈퍼스타 강쥐 뿌린이야!<br />
-                            좋아하는 건 간식 🍪, 싫어하는 건 더운 날 걷기 🌞<br />
-                            특기는 낮잠 자기 🛌, 비밀은 숨소리가 좀 크다는 거야..! ㅎㅎ
+                            안녕하세요! 저는 잠실의 슈퍼스타 강아지 <strong>뿌린</strong>입니다. 🐾<br>
+                            저의 귀여움과 매력으로 모두를 사로잡고 있어요!
+                        </p>
+                        <ul class="list-unstyled">
+                            <li>🎂 <strong>나이:</strong> 10살이에요! 강아지 나이로는 꽤 어른이랍니다.</li>
+                            <li>😴 <strong>특징:</strong> 잘 때 코를 골아요. 숨소리가 커서 사람들도 가끔 깜짝 놀란다구요!</li>
+                            <li>🌞 <strong>싫어하는 것:</strong> 더운 여름에 산책하는 걸 엄청 싫어해요. 뜨거운 아스팔트는 제발 No!</li>
+                            <li>🍗 <strong>좋아하는 것:</strong> 저는 간식 러버! 특히 닭고기 간식은 못 참아요!</li>
+                            <li>🐾 <strong>성격:</strong> 낯선 강아지 친구들은 별로 좋아하지 않아요. 가족이 제일 소중해요!</li>
+                            <li>🛌 <strong>취미:</strong> 하루에 12시간 이상 푹 자는 낮잠 마스터랍니다!</li>
+                            <li>🛁 <strong>특기:</strong> 목욕할 때 거품 놀이를 정말 좋아해요!</li>
+                            <li>🍉 <strong>비밀:</strong> 저는 과일도 좋아해요! 특히 수박은 최고예요! 🍉</li>
+                        </ul>
+                        <p class="lead">
+                            이런 제가 귀엽다고 생각한다면 갤러리에서 저의 사진을 구경해보세요!<br>
+                            저의 일상이 담긴 사진들로 여러분의 하루를 힐링해드릴게요.
                         </p>
                     </div>
                 </div>
