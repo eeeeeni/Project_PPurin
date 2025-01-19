@@ -10,4 +10,7 @@ public interface LikeRepository extends JpaRepository<LikeEntity, Long> {
     List<LikeEntity> findAllByUserId(Long userId);
 
     void deleteByUserIdAndPostId(Long userId, Long postId);
+
+    // 새로운 메서드 추가
+    void deleteByPostId(Long postId); // post_id로 참조 데이터 삭제
 }

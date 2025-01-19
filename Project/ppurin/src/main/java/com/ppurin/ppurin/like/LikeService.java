@@ -23,19 +23,24 @@ public class LikeService {
         this.postRepository = postRepository;
     }
 
+    // 좋아요 토글 메서드
     @Transactional
-    public void likePost(Long userId, Long postId) {
+    public boolean toggleLike(Long userId, Long postId) {
         KakaoUserEntity user = kakaoRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
         PostEntity post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("Post not found"));
 
         if (likeRepository.existsByUserIdAndPostId(userId, postId)) {
-            throw new IllegalArgumentException("Already liked this post.");
+            // 이미 좋아요한 경우 삭제
+            likeRepository.deleteByUserIdAndPostId(userId, postId);
+            return false; // 좋아요 취소
+        } else {
+            // 좋아요 추가
+            LikeEntity like = new LikeEntity(user, post);
+            likeRepository.save(like);
+            return true; // 좋아요 등록
         }
-
-        LikeEntity like = new LikeEntity(user, post);
-        likeRepository.save(like);
     }
 
     @Transactional(readOnly = true)

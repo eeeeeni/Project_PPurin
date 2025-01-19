@@ -11,11 +11,12 @@ public class PostDTO {
     private String date;
     private String tags;
     private List<String> tagList;
+    private boolean liked; // 좋아요 여부 추가
 
     // 기본 생성자
     public PostDTO() {}
 
-    // 생성자
+    // 기존 생성자
     public PostDTO(Long id, String title, String content, String imageUrl, String date, String tags) {
         this.id = id;
         this.title = title;
@@ -24,6 +25,18 @@ public class PostDTO {
         this.date = date;
         this.tags = tags;
         this.tagList = Arrays.asList(tags.split(",")); // tags를 tagList로 변환
+    }
+
+    // 새로운 생성자 (liked 포함)
+    public PostDTO(Long id, String title, String content, String imageUrl, String date, String tags, boolean liked) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.imageUrl = imageUrl;
+        this.date = date;
+        this.tags = tags;
+        this.tagList = Arrays.asList(tags.split(",")); // tags를 tagList로 변환
+        this.liked = liked; // 좋아요 여부 설정
     }
 
     // Getter and Setter
@@ -83,6 +96,14 @@ public class PostDTO {
     public void setTagList(List<String> tagList) {
         this.tagList = tagList;
         this.tags = String.join(",", tagList); // 업데이트 시 tags 동기화
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
     }
 
     // Entity로 변환하는 메소드

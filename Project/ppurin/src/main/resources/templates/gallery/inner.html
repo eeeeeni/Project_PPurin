@@ -42,14 +42,54 @@
                         <span class="badge bg-secondary" th:each="tag : ${post.tagList}" th:text="${tag}"></span>
                     </div>
                 </div>
-                <!-- Like Button -->
-                <div class="text-center mt-4">
-                    <button class="btn btn-outline-danger btn-lg">❤️ 좋아요</button>
-                </div>
+                <div class="mb-3">
+
+                    <div class="post-actions mt-4">
+                        <!-- 삭제 버튼 (관리자만 보이도록 설정) -->
+                        <div class="delete-button" th:if="${isAdmin}">
+                            <form th:action="@{/gallery/delete/{id}(id=${post.id})}" method="post">
+                                <button class="btn btn-danger btn-lg" type="submit">삭제</button>
+                            </form>
+                        </div>
+                    
+                        <!-- 좋아요 버튼
+                        <button class="btn btn-outline-danger btn-lg like-button">❤️ 좋아요</button>
+                    </div> -->
+</section>
+
+<div class="comments-section">
+    <h2 class="section-title">댓글</h2>
+    <div class="comment-list">
+        <!-- 댓글 반복 -->
+        <div class="comment-item" th:each="comment : ${comments}">
+            <div class="comment-header">
+                <p class="comment-author">
+                    <strong th:text="${comment.author}"></strong>
+                    <span class="comment-date" th:text="${comment.createdAt}"></span>
+                </p>
+            </div>
+            <p class="comment-content" th:text="${comment.content}"></p>
+            <div class="comment-actions">
+                <!-- 삭제 버튼 -->
+                <form th:action="@{/gallery/comments/{commentId}/delete(commentId=${comment.id})}" method="post">
+                    <button class="btn btn-sm btn-outline-danger" type="submit">삭제</button>
+                </form>
             </div>
         </div>
     </div>
-</section>
+
+    <!-- 댓글 작성 -->
+    <div class="comment-form">
+        <h3 class="form-title">댓글 작성</h3>
+        <form th:action="@{/gallery/{postId}/comments(postId=${post.id})}" method="post">
+            <textarea name="content" placeholder="댓글 내용을 입력하세요" class="form-control" required></textarea>
+            <button type="submit" class="btn btn-primary mt-3">댓글 추가</button>
+        </form>
+    </div>
+</div>
+
+
+
 
 <!-- Footer-->
 <footer class="py-5 bg-dark">

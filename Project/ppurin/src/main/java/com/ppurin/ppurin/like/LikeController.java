@@ -50,22 +50,20 @@ public class LikeController {
         return ResponseEntity.ok(likedPosts);
     }
 
-    // 좋아요 기능
+    // 좋아요 토글 기능
     @PostMapping("/like/{postId}")
-    public ResponseEntity<?> likePost(@PathVariable Long postId, HttpSession session) {
+    public ResponseEntity<?> toggleLike(@PathVariable Long postId, HttpSession session) {
         KakaoUserDTO user = (KakaoUserDTO) session.getAttribute("user");
         if (user == null) {
             return ResponseEntity.status(401).body("User not logged in.");
         }
 
         try {
-            likeService.likePost(user.getId(), postId);
-            return ResponseEntity.ok("Liked the post.");
+            boolean isLiked = likeService.toggleLike(user.getId(), postId); // 좋아요 토글 처리
+            return ResponseEntity.ok(isLiked ? "Liked the post." : "Unliked the post."); // 상태 반환
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body("Error while liking the post.");
+            return ResponseEntity.badRequest().body("Error while toggling like.");
         }
     }
-
-
 }

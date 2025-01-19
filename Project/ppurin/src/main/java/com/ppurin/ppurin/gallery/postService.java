@@ -6,15 +6,20 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.ppurin.ppurin.like.LikeRepository; // LikeRepository 임포트 필요
 
 @Service
 public class PostService {
 
     private final PostRepository postRepository;
+    private final LikeRepository likeRepository; // LikeRepository 선언
 
     @Autowired
-    public PostService(PostRepository postRepository) {
+    public PostService(PostRepository postRepository, LikeRepository likeRepository) {
         this.postRepository = postRepository;
+        this.likeRepository = likeRepository;
     }
 
     public List<PostEntity> getAllPosts() {
@@ -30,16 +35,16 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public PostEntity updatePost(Long id, PostEntity updatedPost) {
-        return postRepository.findById(id)
-            .map(post -> {
-                post.setTitle(updatedPost.getTitle());
-                post.setContent(updatedPost.getContent());
-                post.setTags(updatedPost.getTags());
-                post.setDate(updatedPost.getDate());
-                post.setImageUrl(updatedPost.getImageUrl());
-                return postRepository.save(post);
-            }).orElseThrow(() -> new RuntimeException("Post not found with id: " + id));
+    @Transactional
+    public void deletePost(Long id) {
+        // 참조 데이터 먼저 삭제
+        likeRepository.deleteByPostId(id);
+
+        // 게시글 삭제
+        if (!postRepository.existsById(id)) {
+            throw new RuntimeException("삭제하려는 게시글이 존재하지 않습니다.");
+        }
+        postRepository.deleteById(id);
     }
 
     public List<PostEntity> getPostsByTag(String tag) {
