@@ -1,6 +1,7 @@
 
 package com.ppurin.ppurin.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +11,18 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
+    @Value("${weather.api.key}")
+    private String weatherApiKey; // weather.api.key 값을 가져옴
+
     @GetMapping("/index")
     public String index(HttpSession session, Model model) {
         // 세션에서 사용자 닉네임 확인
         String nickname = (String) session.getAttribute("nickname");
         model.addAttribute("nickname", nickname); // 닉네임 추가
+
+        // weatherApiKey를 모델에 추가해서 전달
+        model.addAttribute("weatherApiKey", weatherApiKey);
+
         return "index"; // index.html 출력
     }
 

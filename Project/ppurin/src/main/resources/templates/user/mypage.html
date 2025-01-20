@@ -11,7 +11,7 @@
     <!-- Bootstrap icons -->
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css}" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap) -->
-    <link th:href="@{/assets/css/about.css}" rel="stylesheet" />
+    <link th:href="@{/assets/css/gallery.css}" rel="stylesheet" />
 </head>
 
 <body>
@@ -28,39 +28,42 @@
         </div>
     </section>
 
-    <!-- 좋아요한 사진 불러오기 스크립트 -->
-    <script>
-        fetch('/user/mypage/data')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch liked posts');
-                }
-                return response.json();
-            })
-            .then(likedPhotos => {
-                const container = document.querySelector('.liked-photos-container');
-                if (likedPhotos.length === 0) {
-                    container.innerHTML = `<p class="text-center text-muted">좋아요한 사진이 없습니다.</p>`;
-                } else {
-                    likedPhotos.forEach(photo => {
-                        const card = document.createElement('div');
-                        card.className = 'col mb-5';
-                        card.innerHTML = `
-                            <div class="card h-100">
+<!-- 좋아요한 사진 불러오기 스크립트 -->
+<script>
+    fetch('/user/mypage/data')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch liked posts');
+            }
+            return response.json();
+        })
+        .then(likedPhotos => {
+            const container = document.querySelector('.liked-photos-container');
+            if (likedPhotos.length === 0) {
+                container.innerHTML = `<p class="text-center text-muted">좋아요한 사진이 없습니다.</p>`;
+            } else {
+                likedPhotos.forEach(photo => {
+                    const card = document.createElement('div');
+                    card.className = 'col mb-5';
+                    card.innerHTML = `
+                        <div class="card h-100">
+                            <!-- 링크 추가 -->
+                            <a th:href="@{'/gallery/' + ${photo.id}}" class="card-link">
                                 <img class="card-img-top" src="${photo.postImageUrl}" alt="..." />
-                                <div class="card-body p-4">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder">${photo.postTitle}</h5>
-                                        <p class="text-muted mb-2">촬영 날짜: ${photo.date || '정보 없음'}</p>
-                                    </div>
+                            </a>
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">${photo.postTitle}</h5>
+                                    <p class="text-muted mb-2">촬영 날짜: ${photo.date || '정보 없음'}</p>
                                 </div>
                             </div>
-                        `;
-                        container.appendChild(card);
-                    });
-                }
-            })
-            .catch(error => console.error("좋아요 사진 로딩 오류:", error));
-    </script>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        })
+        .catch(error => console.error("좋아요 사진 로딩 오류:", error));
+</script>
 </body>
 </html>

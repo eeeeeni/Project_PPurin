@@ -24,7 +24,7 @@ public class KakaoLoginController {
         // 카카오 로그인 URL 생성
         String kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize"
                 + "?client_id=fb5c1974092e79b0f62adcefcb016818"
-                + "&redirect_uri=https://0b90-58-122-114-100.ngrok-free.app/oauth2/authorization/kakao"
+                + "&redirect_uri=http://localhost:8080/oauth2/authorization/kakao"
                 + "&response_type=code";
         model.addAttribute("kakaoLoginUrl", kakaoLoginUrl);
         return "user/login"; // login.html 출력
