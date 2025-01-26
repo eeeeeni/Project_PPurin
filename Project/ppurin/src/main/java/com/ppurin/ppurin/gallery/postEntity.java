@@ -1,5 +1,7 @@
 package com.ppurin.ppurin.gallery;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,14 +22,14 @@ public class PostEntity {
     private String content;
 
     private String imageUrl;
-    private String date;
+    private LocalDate date;
 
     @Column
     private String tags;
 
     public PostEntity() {}
 
-    public PostEntity(Long id, String title, String content, String imageUrl, String date, String tags) {
+    public PostEntity(Long id, String title, String content, String imageUrl, LocalDate date, String tags) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -69,11 +71,11 @@ public class PostEntity {
         this.imageUrl = imageUrl;
     }
     
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
     
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     

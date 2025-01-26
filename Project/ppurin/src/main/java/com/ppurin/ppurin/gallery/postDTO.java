@@ -1,5 +1,6 @@
 package com.ppurin.ppurin.gallery;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class PostDTO {
     private String title;
     private String content;
     private String imageUrl;
-    private String date;
+    private LocalDate date;
     private String tags;
     private List<String> tagList;
     private boolean liked; // 좋아요 여부 추가
@@ -17,7 +18,7 @@ public class PostDTO {
     public PostDTO() {}
 
     // 기존 생성자
-    public PostDTO(Long id, String title, String content, String imageUrl, String date, String tags) {
+    public PostDTO(Long id, String title, String content, String imageUrl, LocalDate date, String tags) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -28,7 +29,7 @@ public class PostDTO {
     }
 
     // 새로운 생성자 (liked 포함)
-    public PostDTO(Long id, String title, String content, String imageUrl, String date, String tags, boolean liked) {
+    public PostDTO(Long id, String title, String content, String imageUrl, LocalDate date, String tags, boolean liked) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -72,11 +73,11 @@ public class PostDTO {
         this.imageUrl = imageUrl;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

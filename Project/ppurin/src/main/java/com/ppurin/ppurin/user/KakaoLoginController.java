@@ -55,7 +55,7 @@ public class KakaoLoginController {
 
             // isAdmin을 model에 추가하여 Thymeleaf에서 사용할 수 있도록 전달
             model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
-            System.out.println("Is Admin: " + session.getAttribute("isAdmin"));
+            // System.out.println("Is Admin: " + session.getAttribute("isAdmin"));
 
             return "redirect:/index"; // 홈 페이지로 리다이렉트
         } catch (Exception e) {

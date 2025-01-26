@@ -19,11 +19,11 @@ public class KakaoUserService {
             // 새로운 회원 생성
             user = new KakaoUserEntity();
             user.setNickname(nickname); // 닉네임 설정
-            System.out.println("저장할 사용자 정보: " + user);
+            // System.out.println("저장할 사용자 정보: " + user);
             userRepository.save(user);  // 사용자 저장
-            System.out.println("저장된 사용자 ID: " + user.getId());
+            // System.out.println("저장된 사용자 ID: " + user.getId());
         } else {
-            System.out.println("기존 사용자 정보: " + user);
+            // System.out.println("기존 사용자 정보: " + user);
         }
 
         // Entity → DTO 변환

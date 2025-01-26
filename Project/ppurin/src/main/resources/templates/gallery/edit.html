@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>게시글 수정</title>
+    <link th:href="@{/assets/css/gallery.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">게시글 수정</h2>
+
+        <form th:action="@{/gallery/edit/{id}(id=${postDto.id})}" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">제목</label>
+                <input type="text" class="form-control" id="title" name="title" th:value="${postDto.title}" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">내용</label>
+                <textarea class="form-control" id="content" name="content" rows="3" required th:text="${postDto.content}"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">촬영 날짜</label>
+                <input type="date" class="form-control" id="date" name="date" th:value="${postDto.date}">
+            </div>
+            
+            <div class="mb-3">
+                <label for="tags" class="form-label">태그</label>
+                <input type="text" class="form-control" id="tags" name="tags" th:value="${postDto.tags}" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">이미지</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">수정 완료</button>
+        </form>
+    </div>
+</body>
+</html>

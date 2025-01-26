@@ -30,7 +30,7 @@ public class KakaoLoginService {
         try {
             // 1. Access Token 요청
             String accessToken = requestAccessToken(code);
-            System.out.println("Access Token: " + accessToken);
+            // System.out.println("Access Token: " + accessToken);
 
             // 2. 사용자 정보 요청
             return requestUserInfo(accessToken);
@@ -88,11 +88,11 @@ public class KakaoLoginService {
         // JSON 파싱
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(response.getBody());
-        System.out.println("사용자 정보 응답: " + jsonNode);
+        // System.out.println("사용자 정보 응답: " + jsonNode);
 
         // 사용자 닉네임 추출
         String nickname = jsonNode.path("kakao_account").path("profile").path("nickname").asText();
-        System.out.println("추출된 닉네임: " + nickname);
+        // System.out.println("추출된 닉네임: " + nickname);
         return nickname;
     }
 }
